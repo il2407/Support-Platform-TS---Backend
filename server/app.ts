@@ -21,6 +21,7 @@ import { Application } from 'express';
 import express = require('express');
 import bodyParser = require('body-parser');
 import usecaseRoutes from './src/routes/usecaseRoutes';
+import onGoingRouter from './src/routes/OnGoingRoutes';
 import userRouter from './src/routes/userRoutes';
 
 const app: Application = express();
@@ -30,6 +31,7 @@ const mongodb_url = 'mongodb+srv://idolev:il2407@supportplatformdb.tcdb8n4.mongo
 app.use(bodyParser.json());
 app.use('/users', userRouter);
 app.use('/usecase', usecaseRoutes);
+app.use('/on-going', onGoingRouter);
 
 mongoose
   .connect(mongodb_url)
