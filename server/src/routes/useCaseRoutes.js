@@ -7,6 +7,9 @@ const usecaseController = new UsecaseController_1.UsecaseController();
 // Get All usecases
 // Method: GET
 usecaseRouter.get("/", usecaseController.usecase_get_all);
+// Get usecase by id
+// Method: GET
+usecaseRouter.get("/:id", usecaseController.usecase_get_by_id);
 // // Add New usecase
 // // Method: POST
 usecaseRouter.post('/', usecaseController.usecase_add_new_usecase);

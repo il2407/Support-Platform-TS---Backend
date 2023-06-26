@@ -15,6 +15,15 @@ class onGoingService {
             throw new Error('User not exists!');
         }
     }
+    async OnGoing_get_by_id(ongoingId) {
+        try {
+            const OnGoing = await this.OnGoingDBProvider.OnGoing_get_by_id(ongoingId);
+            return OnGoing;
+        }
+        catch {
+            throw new Error('User not exists!');
+        }
+    }
     async OnGoing_add_new_OnGoing(OnGoing) {
         const newOnGoing = await this.OnGoingDBProvider.OnGoing_add_new_OnGoing(OnGoing);
         if (!newOnGoing) {

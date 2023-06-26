@@ -11,9 +11,9 @@ export interface UsecaseDocument extends Document {
 const useCaseSchema: Schema<UsecaseDocument> = new Schema<UsecaseDocument>({
   _id: mongoose.Types.ObjectId,
   subject: { type: String, required: true },
-  description: [{ type: String, required: false }],
-  action: { type: String, required: false },
-  salesforce_action: { type: String, required: false },
+  description: [{ type: String, required: true }],
+  action: { type: String, required: true },
+  salesforce_action: { type: String, required: true },
   notes: { type: String, required: false },
 });
 

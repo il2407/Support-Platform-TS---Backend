@@ -9,9 +9,19 @@ class UsecaseDBProvider {
             const usecases = await UsecaseSchema_1.default.find().exec();
             return usecases;
         }
-        catch (error) {
-            console.error('Error while retrieving use cases:', error);
-            return null;
+        catch (err) {
+            console.error('Error while retrieving use cases:', err);
+            return err.message;
+        }
+    }
+    async usecase_get_by_id(usecaesId) {
+        try {
+            const usecase = await UsecaseSchema_1.default.findById(usecaesId).exec();
+            return usecase;
+        }
+        catch (err) {
+            console.error('Error while retrieving use cases:', err);
+            return err.message;
         }
     }
     async usecase_add_new_usecase(usecase) {
@@ -20,11 +30,17 @@ class UsecaseDBProvider {
             return newUsecase;
         }
         catch (err) {
-            return err;
+            return err.message;
         }
     }
-    usecase_edit(id, updatedData) {
-        return UsecaseSchema_1.default.findByIdAndUpdate(id, updatedData, { new: true }).exec();
+    async usecase_edit(id, updatedData) {
+        try {
+            const usecaseEdit = await UsecaseSchema_1.default.findByIdAndUpdate(id, updatedData, { new: true }).exec();
+            return usecaseEdit;
+        }
+        catch (err) {
+            return err.message;
+        }
     }
     async usecase_delete(id) {
         try {
@@ -32,8 +48,7 @@ class UsecaseDBProvider {
             return deletedUsecase;
         }
         catch (err) {
-            // return err;
-            return null;
+            return err.message;
         }
     }
 }

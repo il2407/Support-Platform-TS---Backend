@@ -12,7 +12,21 @@ class UsecaseService {
             return usecase;
         }
         catch {
-            throw new Error('User not exists!');
+            throw new Error('Users not exists!');
+        }
+    }
+    async usecase_get_by_id(usecaseId) {
+        try {
+            const usecase = await this.usecaseDBProvider.usecase_get_by_id(usecaseId);
+            if (!usecase) {
+                console.log('error oneeeeeeee');
+                throw new Error(`id:${usecase} not exist`);
+            }
+            return usecase;
+        }
+        catch {
+            // return err
+            throw new Error('Could not find usecase!');
         }
     }
     async usecase_add_new_usecase(usecase) {
@@ -26,12 +40,12 @@ class UsecaseService {
         try {
             const updatedUsecase = await this.usecaseDBProvider.usecase_edit(usecaseId, updatedFields);
             if (!updatedUsecase) {
-                throw new Error('Usecase not found');
+                throw new Error('Unable to update usecase fields');
             }
             return updatedUsecase;
         }
         catch (err) {
-            throw (err);
+            throw new Error(`Failed to edit usecase with id: ${usecaseId}`);
         }
     }
     async usecase_delete(usecaseId) {
@@ -43,7 +57,6 @@ class UsecaseService {
             return deletedUsecase;
         }
         catch (err) {
-            // return err;
             throw new Error('Unable to delete usecase');
         }
     }

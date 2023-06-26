@@ -7,6 +7,9 @@ const OnGoingController = new OnGoingController_1.onGoingController();
 // Get All OnGoing
 // Method: GET
 onGoingRouter.get("/", OnGoingController.OnGoing_get_all);
+// Get OnGoing by id
+// Method: GET
+onGoingRouter.get("/:id", OnGoingController.OnGoing_get_by_id);
 // // Add New OnGoing
 // // Method: POST
 onGoingRouter.post('/', OnGoingController.OnGoing_add_new_OnGoing);

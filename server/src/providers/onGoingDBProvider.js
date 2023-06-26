@@ -14,6 +14,16 @@ class onGoingDBProvider {
             return null;
         }
     }
+    async OnGoing_get_by_id(ongoingId) {
+        try {
+            const OnGoings = await OnGoingSchema_1.default.findById(ongoingId).exec();
+            return OnGoings;
+        }
+        catch (error) {
+            console.error('Error while retrieving use cases:', error);
+            return null;
+        }
+    }
     async OnGoing_add_new_OnGoing(OnGoing) {
         try {
             const newOnGoing = await OnGoing.save();
