@@ -13,26 +13,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // app.listen(port, () => {
 //   console.log(`Server started on port ${port}`);
 // });
-const mongoose_1 = require("mongoose");
-const express = require("express");
-const bodyParser = require("body-parser");
-const usecaseRoutes_1 = require("./src/routes/usecaseRoutes");
-const userRoutes_1 = require("./src/routes/userRoutes");
-const app = express();
-const port = 3000;
-const mongodb_url = 'mongodb+srv://idolev:il2407@supportplatformdb.tcdb8n4.mongodb.net/';
+var mongoose_1 = require("mongoose");
+var express = require("express");
+var bodyParser = require("body-parser");
+var usecaseRoutes_1 = require("./src/routes/usecaseRoutes");
+var OnGoingRoutes_1 = require("./src/routes/OnGoingRoutes");
+var userRoutes_1 = require("./src/routes/userRoutes");
+var app = express();
+var port = 3000;
+var mongodb_url = 'mongodb+srv://idolev:il2407@supportplatformdb.tcdb8n4.mongodb.net/';
 app.use(bodyParser.json());
 app.use('/users', userRoutes_1.default);
 app.use('/usecase', usecaseRoutes_1.default);
+app.use('/on-going', OnGoingRoutes_1.default);
 mongoose_1.default
     .connect(mongodb_url)
-    .then(() => {
+    .then(function () {
     console.log('Connected to MongoDB');
-    app.listen(port, () => {
-        console.log(`Server is listening on port ${port}`);
+    app.listen(port, function () {
+        console.log("Server is listening on port ".concat(port));
     });
 })
-    .catch((error) => {
+    .catch(function (error) {
     console.error('Error connecting to MongoDB', error);
 });
-//# sourceMappingURL=app.js.map
