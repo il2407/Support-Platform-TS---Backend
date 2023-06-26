@@ -5,10 +5,15 @@ import bodyParser = require('body-parser');
 import usecaseRoutes from './src/routes/usecaseRoutes';
 import onGoingRouter from './src/routes/OnGoingRoutes';
 import gatewayRouter from './src/routes/GatewayDetailsRoutes';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const app: Application = express();
 const port = 3000;
-const mongodb_url = 'mongodb+srv://idolev:il2407@supportplatformdb.tcdb8n4.mongodb.net/';
+// const mongodb_url = `mongodb+srv://idolev:il2407@supportplatformdb.tcdb8n4.mongodb.net/`;
+const mongodb_url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@supportplatformdb.tcdb8n4.mongodb.net/`;
+
 
 app.use(bodyParser.json());
 app.use('/usecase', usecaseRoutes);

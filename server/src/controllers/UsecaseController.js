@@ -56,8 +56,6 @@ class UsecaseController {
             res.json(updatedUsecase);
         }
         catch (err) {
-            // res.status(500).json({ error: err.message }) 
-            // res.status(500).json({ error: `Unable to edit usecase with id: ${usecaseId}` });
             res.status(500).json({ error: err });
         }
     }
