@@ -14,8 +14,17 @@ export class onGoingController {
 
   public async OnGoing_get_all(req: Request, res: Response): Promise<void> {
     try {
-      console.log("test")
       const OnGoing = await OnGoingService.OnGoing_get_all();
+      res.json(OnGoing);
+    } catch (error) {
+      res.status(500).json({ error: error })
+    }
+  }
+
+  public async OnGoing_get_by_id(req: Request, res: Response): Promise<void> {
+    try {
+      const ongoingId: string = req.params.id;
+      const OnGoing = await OnGoingService.OnGoing_get_by_id(ongoingId);
       res.json(OnGoing);
     } catch (error) {
       res.status(500).json({ error: error })

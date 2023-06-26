@@ -18,6 +18,17 @@ class UsecaseController {
             res.status(500).json({ error: error });
         }
     }
+    async usecase_get_by_id(req, res) {
+        try {
+            const usecaseId = req.params.id;
+            const usecases = await usecaseService.usecase_get_by_id(usecaseId);
+            res.json(usecases);
+        }
+        catch (err) {
+            // console.log("get by id error:", error)
+            res.status(500).json({ error: err.message });
+        }
+    }
     async usecase_add_new_usecase(req, res) {
         const usecaseData = new UsecaseSchema_1.default(); // Create an instance
         usecaseData._id = new mongoose_1.default.Types.ObjectId();
@@ -39,29 +50,25 @@ class UsecaseController {
         const updatedFields = req.body;
         try {
             const updatedUsecase = await usecaseService.usecase_edit(usecaseId, updatedFields);
+            if (!updatedUsecase) {
+                res.status(500).json({ error: `${usecaseId} doesn't exist` });
+            }
             res.json(updatedUsecase);
         }
         catch (err) {
-            res.status(500).json({ error: err.message });
+            // res.status(500).json({ error: err.message }) 
+            // res.status(500).json({ error: `Unable to edit usecase with id: ${usecaseId}` });
+            res.status(500).json({ error: err });
         }
     }
     async usecase_delete(req, res) {
         const usecaseId = req.params.id;
         try {
             const deletedUsecase = await usecaseService.usecase_delete(usecaseId);
-            // res.json(deletedUsecase);
-            if (!deletedUsecase) {
-                return res.status(404).json({ error: 'Usecase not found' });
-            }
             res.json(deletedUsecase);
         }
         catch (err) {
-            // if (err.name === 'CastError') {
-            //   res.status(400).json({ error: "Invalid usecase ID" });
-            // } else {
-            //   res.status(500).json({ error: "Failed to delete usecase" });
-            // }
-            res.status(500).json({ error: `Unable to delete usecase with id: ${usecaseId}` });
+            res.status(500).json({ error: err.message });
         }
     }
 }

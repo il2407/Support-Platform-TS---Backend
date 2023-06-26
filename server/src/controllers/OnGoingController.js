@@ -11,8 +11,17 @@ class onGoingController {
     }
     async OnGoing_get_all(req, res) {
         try {
-            console.log("test");
             const OnGoing = await OnGoingService.OnGoing_get_all();
+            res.json(OnGoing);
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
+    }
+    async OnGoing_get_by_id(req, res) {
+        try {
+            const ongoingId = req.params.id;
+            const OnGoing = await OnGoingService.OnGoing_get_by_id(ongoingId);
             res.json(OnGoing);
         }
         catch (error) {

@@ -18,6 +18,17 @@ export class onGoingService {
             throw new Error('User not exists!')
         }
     }
+
+    public async OnGoing_get_by_id(ongoingId: string): Promise<OnGoingDocument | null> {
+        try {
+            const OnGoing = await this.OnGoingDBProvider.OnGoing_get_by_id(ongoingId);
+            return OnGoing
+
+        } catch {
+            throw new Error('User not exists!')
+        }
+    }
+
     public async OnGoing_add_new_OnGoing(OnGoing: OnGoingDocument): Promise<OnGoingDocument | null> {
         const newOnGoing = await this.OnGoingDBProvider.OnGoing_add_new_OnGoing(OnGoing);
         if (!newOnGoing) {

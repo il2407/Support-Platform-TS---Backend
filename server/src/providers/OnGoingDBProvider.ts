@@ -15,6 +15,16 @@ export class onGoingDBProvider {
         }
     }
 
+    public async OnGoing_get_by_id(ongoingId: string): Promise<OnGoingDocument | null> {
+        try {
+            const OnGoings = await OnGoing.findById(ongoingId).exec();
+            return OnGoings;
+        } catch (error) {
+            console.error('Error while retrieving use cases:', error);
+            return null;
+        }
+    }
+
     public async OnGoing_add_new_OnGoing(OnGoing: OnGoingDocument): Promise<OnGoingDocument | null> {
         try {
             const newOnGoing = await OnGoing.save();
