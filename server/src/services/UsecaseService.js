@@ -15,6 +15,14 @@ class UsecaseService {
             throw new Error('User not exists!');
         }
     }
+    // public async usecase_get_by_id(): Promise<UsecaseDocument[] | null> {
+    //     try {
+    //         const usecase = await this.usecaseDBProvider.usecase_get_all();
+    //         return usecase
+    //     } catch {
+    //         throw new Error('User not exists!')
+    //     }
+    // }
     async usecase_add_new_usecase(usecase) {
         const newUsecase = await this.usecaseDBProvider.usecase_add_new_usecase(usecase);
         if (!newUsecase) {
