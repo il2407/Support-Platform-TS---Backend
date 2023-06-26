@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose_1 = require("mongoose");
-var onGoingSchema = new mongoose_1.Schema({
+const mongoose_1 = require("mongoose");
+const onGoingSchema = new mongoose_1.Schema({
     _id: mongoose_1.default.Types.ObjectId,
     reporter: { type: String, required: false },
     case: [{ type: String, required: false }],
@@ -14,3 +14,4 @@ var onGoingSchema = new mongoose_1.Schema({
     ongoing_type: { type: String, required: false },
 });
 exports.default = mongoose_1.default.model('OnGoing', onGoingSchema);
+//# sourceMappingURL=OnGoingSchema.js.map

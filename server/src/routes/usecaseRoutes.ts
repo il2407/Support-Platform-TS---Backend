@@ -8,6 +8,7 @@ const usecaseController = new UsecaseController();
 // Method: GET
 usecaseRouter.get("/", usecaseController.usecase_get_all);
 
+
 // // Add New usecase
 // // Method: POST
 usecaseRouter.post('/', usecaseController.usecase_add_new_usecase);

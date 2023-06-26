@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = require("express");
-var OnGoingController_1 = require("../controllers/OnGoingController");
-var onGoingRouter = (0, express_1.Router)();
-var OnGoingController = new OnGoingController_1.onGoingController();
+const express_1 = require("express");
+const OnGoingController_1 = require("../controllers/OnGoingController");
+const onGoingRouter = (0, express_1.Router)();
+const OnGoingController = new OnGoingController_1.onGoingController();
 // Get All OnGoing
 // Method: GET
 onGoingRouter.get("/", OnGoingController.OnGoing_get_all);
@@ -17,3 +17,4 @@ onGoingRouter.put("/:id", OnGoingController.OnGoing_edit);
 // // Method: DELETE
 onGoingRouter.delete("/:id", OnGoingController.OnGoing_delete);
 exports.default = onGoingRouter;
+//# sourceMappingURL=OnGoingRoutes.js.map
